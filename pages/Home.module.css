@@ -1,0 +1,30 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: rgb(0,46,255);
+  background: linear-gradient(0deg, rgba(0,46,255,1) 0%, rgba(14,150,255,1) 35%, rgba(0,213,255,1) 100%);
+}
+
+.love {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  width: 360px;
+  height: 420px;
+  padding: 32px;
+  border-radius: 16px;
+  filter: drop-shadow(0 3px 3px #999999);
+}
