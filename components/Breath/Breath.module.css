@@ -21,13 +21,6 @@
   background-color: #6FB4F9;
 }
 
-.upper {
-  position: absolute;
-  top: 110%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .center {
   position: absolute;
   top: 50%;
@@ -40,4 +33,16 @@
   top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.underneath {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.link {
+  text-decoration: underline;
+  text-decoration-color: white;
 }

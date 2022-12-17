@@ -4,6 +4,7 @@ import styles from './Breath.module.css'
 
 
 export default function Breath(props) {
+  const requestRef = useRef();
   const containerRef = useRef()
   const canvasRef = useRef()
   const instructionRef = useRef()
@@ -38,7 +39,7 @@ export default function Breath(props) {
       const startAngle = (90-pos) * Math.PI/180
       const endAngle = (90+pos) * Math.PI/180
       const canvas = canvasRef.current
-      const size = canvas.width
+      const size = canvas?.width
       const ctx = canvasRef.current.getContext('2d')
 
       ctx.clearRect(0, 0, size, size)
@@ -80,22 +81,27 @@ export default function Breath(props) {
         instructionRef2.current.innerHTML = null
       }
 
-      window.requestAnimationFrame(step);
+      requestRef.current = window.requestAnimationFrame(step);
     }
 
     const size = containerRef.current.clientWidth
     canvasRef.current.width = size
     canvasRef.current.height = size
-    window.requestAnimationFrame(step);
+    requestRef.current = window.requestAnimationFrame(step);
+
+    return () => cancelAnimationFrame(requestRef.current);
   }, [containerRef.current?.clientWidth])
 
   return (
     <div ref={containerRef} className={styles.container}>
       <div className={styles.circle} />
       <canvas ref={canvasRef} className={styles.center} />
-      <Text.Title ref={instructionRef3} className={styles.upper} size={16} white>Round 1 of 8</Text.Title>
       <Text.H2 ref={instructionRef} className={styles.center} size={32} bold white>Inhale</Text.H2>
       <Text.Title ref={instructionRef2} className={styles.lower} size={21} bold white></Text.Title>
+      <div className={styles.underneath}>
+        <Text.Title ref={instructionRef3} size={16} bold white>Round 1 of 8</Text.Title>
+        <a onClick={() => props.setStep(1)}><Text.Title size={16} white className={styles.link}>Restart</Text.Title></a>
+      </div>
     </div>
   )
 }
