@@ -35,10 +35,10 @@ export default function Home() {
 function Begin({ setStep }) {
   return (
     <>
-      <Text.H1 white>Hello, 👋</Text.H1>
-      <Text.H1 white>Let's take a few deep breaths.</Text.H1>
+      <Text.H1 bold white>Hello, 👋</Text.H1>
+      <Text.H1 bold white>Let's take a few deep breaths.</Text.H1>
       <br />
-      <Button onClick={() => setStep(1)} variant="light" size="lg">Begin</Button>
+      <Button onClick={() => setStep(1)} variant="light" size="lg">🍵 Begin</Button>
     </>
   )
 }
