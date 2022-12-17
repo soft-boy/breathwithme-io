@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
-import Script from 'next/script'
 import Button from 'react-bootstrap/Button';
 import * as Text from '../components/Text/Text'
 import Space from '../components/Space/Space';
+import Breath from '../components/Breath/Breath';
 import { Follow } from 'react-twitter-widgets';
 import styles from './Home.module.css'
 import logo from './logo.png'
@@ -14,7 +14,7 @@ export default function Home() {
   const getContent = () => {
     switch(step) {
       case 0: return <Begin setStep={setStep} />
-      case 1: return <Cta setStep={setStep} />
+      case 1: return <Breath setStep={setStep} />
       case 2: return <Cta setStep={setStep} />
       default: <Begin setStep={setStep} />
     }
@@ -35,7 +35,7 @@ export default function Home() {
 function Begin({ setStep }) {
   return (
     <>
-      <Text.H1 white>Hello 👋</Text.H1>
+      <Text.H1 white>Hello, 👋</Text.H1>
       <Text.H1 white>Let's take a few deep breaths.</Text.H1>
       <br />
       <Button onClick={() => setStep(1)} variant="light" size="lg">Begin</Button>
@@ -43,17 +43,7 @@ function Begin({ setStep }) {
   )
 }
 
-function Breath({ setStep }) {
-  return (
-    <>
-      <Text.H1 white>Hello 👋</Text.H1>
-    </>
-  )
-}
-
 function Cta({ setStep }) {
-  const TwitterButton = () => <a href="https://twitter.com/BreathFlowHQ?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow @BreathFlowHQ</a>
-
   return (
     <Space direction="vertical" size="large" alignItems="center">
       <div className={styles.card}>

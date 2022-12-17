@@ -1,0 +1,43 @@
+.container {
+  position: relative;
+  width: 70%;
+  max-width: 360px;
+}
+
+.container:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.circle {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: #6FB4F9;
+}
+
+.upper {
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lower {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

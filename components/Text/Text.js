@@ -1,3 +1,4 @@
+import React from 'react'
 import { Inter } from '@next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -38,15 +39,15 @@ const getExtraStyles = (props) => {
   return styles
 }
 
-export function Title({ children, style, className, size=16, ...props }) {
+export const Title = React.forwardRef(({ children, style, className, size=16, ...props }, ref) => {
   const extraStyles = getExtraStyles(props)
 
   return (
-    <div style={{fontSize: size, ...style, ...extraStyles}} className={`${className} ${inter.className}`}>
+    <div ref={ref} style={{fontSize: size, ...style, ...extraStyles}} className={`${className} ${inter.className}`}>
       {children}
     </div>
   )
-}
+})
 
 export function Body({ children, style, className, size=16, ...props }) {
   const extraStyles = getExtraStyles(props)
@@ -99,15 +100,15 @@ export function H3({ children, style, className, size=22, ...props }) {
   )
 }
 
-export function H2({ children, style, className, size=26, ...props }) {
+export const H2 = React.forwardRef(({ children, style, className, size=26, ...props }, ref) => {
   const extraStyles = getExtraStyles(props)
 
   return (
-    <h2 style={{fontSize: size, ...style, ...extraStyles}} className={`${className} ${inter.className}`}>
+    <h2 ref={ref} style={{fontSize: size, ...style, ...extraStyles}} className={`${className} ${inter.className}`}>
       {children}
     </h2>
   )
-}
+})
 
 export function H1({ children, style, className, size=32, ...props }) {
   const extraStyles = getExtraStyles(props)

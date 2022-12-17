@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }) {
   return (
     <main className={inter.className}>
       <Head>
-        <title>BreathWithMe.io</title>
+        <title>4-7-8 Breathing | BreathWithMe.io</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Component {...pageProps} />
