@@ -10,7 +10,7 @@ import logo from './logo.png'
 import jennifer from './jennifer.png'
 
 export default function Home() {
-  const [step, setStep] = useState(3)
+  const [step, setStep] = useState(0)
 
   const getContent = () => {
     switch(step) {
@@ -65,9 +65,20 @@ function Cta({ setStep }) {
   return (
     <Space direction="vertical" size="large" alignItems="center">
       <div className={styles.card}>
-        <Text.H2 heavy>Well Done 🎉</Text.H2>
-        <>lalala</>
-        <Button onClick={() => setStep(0)} variant="light">Do this again</Button>
+        <Space style={{ width: '100%' }} direction="vertical" size="large" alignItems="center">
+          <Text.H4>Nice! 🎉</Text.H4>
+          <a href="https://www.meetup.com/the-breathwork-club/" className={styles.ad}>
+            <Text.H3 heavy>Want to Go Deeper?</Text.H3>
+            <div></div>
+            <div>
+              <Text.H4 heavy>The Breathwork Club</Text.H4> 
+              <Text.Title>is hosting free Zoom guided breathwork</Text.Title>
+              <Text.Title>{'-->'}</Text.Title>
+            </div>
+            <Image fill style={{objectFit: "contain", top: -35}} src={jennifer} alt="more breathwork" />
+          </a>
+          <Button onClick={() => setStep(0)} variant="light">Do this again</Button>
+        </Space>
       </div>
       <Follow username="BreathFlowHQ" />
     </Space>
