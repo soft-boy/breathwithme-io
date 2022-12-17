@@ -5,12 +5,22 @@ import * as Text from '../components/Text/Text'
 import Space from '../components/Space/Space';
 import Breath from '../components/Breath/Breath';
 import { Follow } from 'react-twitter-widgets';
+import { init, track }  from '@amplitude/analytics-browser';
 import styles from './Home.module.css'
 import logo from './logo.png'
 import jennifer from './jennifer.png'
 
 export default function Home() {
-  const [step, setStep] = useState(0)
+  const [step, setStepUninstrumented] = useState(0)
+  const setStep = (s) => {
+    track(`setStep: ${s}`)
+    setStepUninstrumented(s)
+  }
+
+  useEffect(() => {
+    init('447ebb451644f55d70a6689816ce6986')
+    track(`Page Load`)
+  }, [])
 
   const getContent = () => {
     switch(step) {
@@ -67,7 +77,7 @@ function Cta({ setStep }) {
       <div className={styles.card}>
         <Space style={{ width: '100%' }} direction="vertical" size="large" alignItems="center">
           <Text.H4>Nice! 🎉</Text.H4>
-          <a href="https://www.meetup.com/the-breathwork-club/" className={styles.ad}>
+          <a onClick={() => track('Visit Meetup.com')} href="https://www.meetup.com/the-breathwork-club/" className={styles.ad}>
             <Text.H3 heavy>Want to Go Deeper?</Text.H3>
             <div></div>
             <div>
