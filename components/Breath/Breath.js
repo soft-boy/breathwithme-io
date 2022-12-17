@@ -57,7 +57,7 @@ export default function Breath(props) {
 
         if (phase === 2) {
           if (cycle === 7) {
-            return props.setStep(2) // done
+            return props.setStep(3) // done
           }
           else {
             cycle = cycle + 1

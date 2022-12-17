@@ -7,15 +7,17 @@ import Breath from '../components/Breath/Breath';
 import { Follow } from 'react-twitter-widgets';
 import styles from './Home.module.css'
 import logo from './logo.png'
+import jennifer from './jennifer.png'
 
 export default function Home() {
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(3)
 
   const getContent = () => {
     switch(step) {
       case 0: return <Begin setStep={setStep} />
-      case 1: return <Breath setStep={setStep} />
-      case 2: return <Cta setStep={setStep} />
+      case 1: return <Timer setStep={setStep} />
+      case 2: return <Breath setStep={setStep} />
+      case 3: return <Cta setStep={setStep} />
       default: <Begin setStep={setStep} />
     }
   }
@@ -38,8 +40,24 @@ function Begin({ setStep }) {
       <Text.H1 bold white>Hello, 👋</Text.H1>
       <Text.H1 bold white>Let's take a few deep breaths.</Text.H1>
       <br />
-      <Button onClick={() => setStep(1)} variant="light" size="lg">🍵 Begin</Button>
+      <br />
+      <Button onClick={() => setStep(1)} variant="light" size="lg">🍵 Click to Start</Button>
     </>
+  )
+}
+
+function Timer({ setStep }) {
+  const ref = React.useRef()
+  const [time, setTime] = useState(3)
+  useEffect(() => {
+    setTimeout(() => {
+      if (time === 1) return setStep(2)
+      setTime(time - 1)
+    }, 1000)
+  }, [time])
+
+  return (
+    <Text.H2 ref={ref} white>{time}...</Text.H2>
   )
 }
 
