@@ -13,7 +13,7 @@ export default function Breath(props) {
 
   useEffect(() => {
     let start;
-    let cycle = 0; // 0-7 (8 cycles)
+    let cycle = 0; // 0-5 (6 cycles)
     let phase = 0; // 0-2 (inhale, hold, exhale)
 
     const phaseDurations = { // 4-7-8 seconds
@@ -57,13 +57,13 @@ export default function Breath(props) {
         start = timestamp
 
         if (phase === 2) {
-          if (cycle === 7) {
+          if (cycle === 5) {
             return props.setStep(3) // done
           }
           else {
             cycle = cycle + 1
             phase = 0
-            instructionRef3.current.innerHTML = `Round ${cycle+1} of 8`
+            instructionRef3.current.innerHTML = `Round ${cycle+1} of 6`
           }
         }
         else {
@@ -99,7 +99,7 @@ export default function Breath(props) {
       <Text.H2 ref={instructionRef} className={styles.center} size={32} bold white>Inhale</Text.H2>
       <Text.Title ref={instructionRef2} className={styles.lower} size={21} bold white></Text.Title>
       <div className={styles.underneath}>
-        <Text.Title ref={instructionRef3} size={16} bold white>Round 1 of 8</Text.Title>
+        <Text.Title ref={instructionRef3} size={16} bold white>Round 1 of 6</Text.Title>
         <a onClick={() => props.setStep(1)}><Text.Title size={16} white className={styles.link}>Restart</Text.Title></a>
       </div>
     </div>
